@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Sync copy from Notion
         env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN_JAIKHARBANDA_PERSONAL_WEBSITE }}
         run: node scripts/sync-notion.mjs
       - uses: withastro/action@v3
 
