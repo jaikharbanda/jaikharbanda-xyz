@@ -71,7 +71,8 @@ function blocksToMarkdown(blocks) {
     const t = b.type;
     const rt = (b[t] && b[t].rich_text) || [];
     if (t === 'paragraph') out.push(richText(rt) + '\n');
-    else if (t === 'heading_1') out.push(`# ${richText(rt)}\n`);
+    // heading_1 demoted: site pages keep a single h1 (the page title)
+    else if (t === 'heading_1') out.push(`## ${richText(rt)}\n`);
     else if (t === 'heading_2') out.push(`## ${richText(rt)}\n`);
     else if (t === 'heading_3') out.push(`### ${richText(rt)}\n`);
     else if (t === 'bulleted_list_item') out.push(`- ${richText(rt)}`);

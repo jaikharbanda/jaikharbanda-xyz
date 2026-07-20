@@ -5,7 +5,7 @@ I'm Jai, Applied AI Lead at Turing College, a YC-backed edtech. I sell employer-
 
 I took this job out of a belief: the average person can get properly capable with AI, and the ones who do will be fine whatever the market does next. I'm the test case. History MA, no technical background, and a 14-agent system I built now runs most of my working week.
 
-## The longer version
+## Background
 
 My degree is in history, with a master's in Area Studies from the University of London. My career has been commercial: early roles at Collectiv Food, a B Corp rebuilding food supply chains, then an entrepreneur in residence stint at Antler in London. At Antler I worked on MCP testing and reliability tooling, which meant founder-led sales from a standing start: cold outbound to devtool founders, discovery calls run on Mom Test discipline, and a design partner pipeline I built and scored myself.
 

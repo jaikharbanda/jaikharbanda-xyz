@@ -6,9 +6,9 @@ summary: "Fourteen agents brief my meetings, keep my CRM honest, build campaigns
 featured: true
 note: "Account names and internal data stay private. The architecture is the point, and that's shareable."
 ---
-**Context.** I have a history degree and a sales career. Until recently, "building software" was something other people did. Then I spent three months with Claude Code seeing how far the methods I now teach would take someone like me.
+**Context.** I have a history degree and a sales career. Until recently, "building software" was something other people did. Then I spent three months with OpenClaw and Claude Code seeing how far the methods I now teach would take someone like me.
 
-**What I did.** I built an agent system that runs the repetitive half of my job. Every morning it produces a brief for each external meeting, pulled from my CRM, email and notes. It keeps Salesforce honest without me touching it. It builds outbound campaigns from real account data and pushes them to Lemlist, with an approval gate before anything sends, because some decisions should stay human. After calls, an agent scores the deal against a qualification framework and tells me what I missed.
+**What I did.** I built an agent system that runs the repetitive half of my job. Every morning it produces a brief for each external meeting, pulled from my CRM, email and notes. It keeps Salesforce honest without me touching it (most of the time!). It builds outbound campaigns from real account data and pushes them to Lemlist, with an approval gate before anything sends, because some decisions should stay human. After calls, an agent scores the deal against a qualification framework and tells me what I missed.
 
 **What happened.** Fourteen agents, three months, no computer science. Colleagues noticed before I said anything, usually when a briefing document appeared that nobody remembered writing. The system now runs most of my working week, and it doubles as the standing demo in every workshop I teach: this is what a non-technical person can build now.
 

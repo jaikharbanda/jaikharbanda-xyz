@@ -9,6 +9,6 @@ featured: false
 
 **What I did.** I built a 10-point qualification framework from first principles. Five pass/fail critical filters that no amount of charm can compensate for. A weighted scoring matrix for the rest. Red-flag overrides that can sink a high score on their own. And a Mom Test rule running through all of it: only actions count as evidence. A calendar invite is data; "this is really cool" is not.
 
-**What happened.** The framework ran my pipeline. It pushed one partner to a drafted letter of intent with a 30-day commercial clause, and, just as usefully, it killed several deals early that would have eaten weeks. I recalibrated it monthly against what partners actually did.
+**What happened.** The framework ran my pipeline. It pushed one partner to a drafted letter of intent with a 30-day commercial clause, and, just as usefully, it killed several deals early that would have eaten weeks. I recalibrated it weekly against what partners actually did.
 
-**What I'd reuse.** All of it, and I do. The same actions-only discipline now runs inside my enterprise qualification at Turing College. Frameworks transfer; enthusiasm doesn't.
+**What I'd reuse.** All of it, and I do. The same actions-only discipline now runs inside my enterprise qualification at Turing College.
