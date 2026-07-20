@@ -2,7 +2,7 @@
 title: "A qualification framework that scores actions, not compliments"
 pillars: [gtm]
 date: 2026-01-15
-summary: "A 10-point design partner qualification system built during my EIR stint at Antler: pass/fail critical filters, weighted scoring, red-flag overrides, and monthly calibration against real outcomes."
+summary: "A 10-point design partner qualification system built during my EIR stint at Antler: pass/fail critical filters, weighted scoring, red-flag overrides, and weekly calibration against real outcomes."
 featured: false
 ---
 **Context.** During my entrepreneur in residence stint at Antler, I was doing founder-led sales for an MCP testing and reliability product. Early-stage design partner conversations are full of enthusiasm, and enthusiasm converts terribly. I needed a way to tell the partners who would actually test the product from the ones who just enjoyed the conversation.
