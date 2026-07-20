@@ -1,48 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
 import WorkCard from '../components/WorkCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
+import copy from '../data/copy.json';
 
 const work = (await getCollection('work'))
   .filter((e) => e.data.pillars.includes('gtm'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const intro = await getEntry('sections', 'gtm-intro');
+const { Content: Intro } = await render(intro);
 ---
 <Base
   title="GTM systems — Jai Kharbanda"
-  description="Enterprise sales for AI apprenticeships: qualification frameworks, outbound systems audited across 100+ campaigns, and pipeline treated as an engineering problem."
+  description={copy['gtm.hero.sub']}
   active="gtm"
 >
   <section class="hero">
     <h1>GTM systems</h1>
-    <p class="sub">
-      I sell employer-funded AI apprenticeships to UK enterprises. A typical week is 6 to 10
-      discovery calls, 3 or 4 concurrent enterprise cycles, and a mock presentation before any
-      pitch that matters. The rest of this page is how the engine behind that works.
-    </p>
+    <p class="sub">{copy['gtm.hero.sub']}</p>
   </section>
 
   <div class="prose">
-    <h2>How I work</h2>
-    <p>
-      Everything gets measured, logged and turned into a framework someone else could run. When a
-      channel works once, I write the runbook. When it fails, I write down why and set kill
-      criteria before trying again. Signals decide which accounts get attention; the calendar just
-      executes.
-    </p>
-    <p>
-      The distinctive part is that the engine itself runs on AI. Claude Code and MCP drive my
-      enrichment, campaign builds and CRM hygiene, with approval gates where a human should stay in
-      the loop. Campaigns that used to take an afternoon get built in minutes, which means the
-      scarce resource goes back to being judgement.
-    </p>
-
-    <h2>Things I've built and stand behind</h2>
-    <ul>
-      <li>A design partner qualification framework that scores actions, never compliments</li>
-      <li>An outbound audit across 100+ campaigns that changed our channel strategy</li>
-      <li>A re-engagement workflow that turned dead leads into booked calls, now a standing system</li>
-      <li>A members' club talk circuit that works as top-of-funnel for enterprise deals</li>
-    </ul>
+    <Intro />
   </div>
 
   <section>

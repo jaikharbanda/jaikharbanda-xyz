@@ -1,46 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
 import WorkCard from '../components/WorkCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
+import copy from '../data/copy.json';
 
 const work = (await getCollection('work'))
   .filter((e) => e.data.pillars.includes('ai'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const intro = await getEntry('sections', 'ai-intro');
+const { Content: Intro } = await render(intro);
 ---
 <Base
   title="Applied AI & teaching — Jai Kharbanda"
-  description="Multi-week Claude Code curricula, live workshops where every attendee ships something, and the agent systems I build and run myself."
+  description={copy['ai.hero.sub']}
   active="ai"
 >
   <section class="hero">
     <h1>Applied AI &amp; teaching</h1>
-    <p class="sub">
-      My rule for every session: the audience ships something before they leave. Slides are for
-      context. The point is a working artefact, made by the attendee, live by the end.
-    </p>
+    <p class="sub">{copy['ai.hero.sub']}</p>
   </section>
 
   <div class="prose">
-    <h2>Teaching</h2>
-    <p>
-      I design and run multi-week curricula and one-off workshops, mostly on Claude Code and
-      practical AI workflows. The recent four-week working group with Women in Tech UK ended with
-      every participant deploying a live website they'd built in-session. I make the attendee
-      hubs, run sheets, demo fallbacks and sandboxes myself, and I retro every event honestly:
-      what landed, what died, what changes next time.
-    </p>
-    <p>
-      The credibility behind the teaching is simple. I'm not a developer. History degree, sales
-      career. If the methods I teach got me to a 14-agent system in three months, they'll work for
-      the people in the room.
-    </p>
-
-    <h2>Building</h2>
-    <p>
-      My own stack is the standing demo: agents that brief my meetings, clean my CRM, build
-      campaigns and analyse my calls, plus the event hubs and small tools I ship for my own life.
-      Most of it is public on GitHub, because "go and look" beats "trust me".
-    </p>
+    <Intro />
   </div>
 
   <section>

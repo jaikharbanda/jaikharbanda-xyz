@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getPosts, ukDate } from '../lib/substack.js';
+import copy from '../data/copy.json';
 
 const posts = await getPosts(30);
 ---
@@ -11,11 +12,7 @@ const posts = await getPosts(30);
 >
   <section class="hero">
     <h1>Writing</h1>
-    <p class="sub">
-      I publish weekly at <a href="https://jaikharbanda.substack.com">AI with Jai</a>. The running
-      thread is the knowing-doing gap: why giving people AI tools changes so little, and what
-      actually makes a person or a team capable. This page updates itself from the Substack feed.
-    </p>
+    <p class="sub">{copy['writing.hero.sub']}</p>
   </section>
 
   {posts.length > 0 ? (
