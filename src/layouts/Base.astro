@@ -61,6 +61,24 @@ const nav = [
       <slot />
     </main>
 
+    <script is:inline data-goatcounter="https://jaikharbanda.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <script is:inline>
+      // Count the clicks that matter: subscribe, book, email, socials, track choice.
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a');
+        if (!a || !window.goatcounter || !window.goatcounter.count) return;
+        var h = a.href || '';
+        var ev = null;
+        if (h.indexOf('substack.com') !== -1) ev = 'substack';
+        else if (h.indexOf('cal.com/jaikharbanda') !== -1) ev = 'book-call';
+        else if (h.indexOf('mailto:') === 0) ev = 'email';
+        else if (h.indexOf('linkedin.com') !== -1) ev = 'linkedin';
+        else if (h.indexOf('github.com') !== -1) ev = 'github';
+        else if (a.classList.contains('track-card')) ev = a.getAttribute('href') === '/gtm' ? 'track-gtm' : 'track-ai';
+        if (ev) window.goatcounter.count({ path: ev, title: ev, event: true });
+      });
+    </script>
+
     <footer class="site">
       <div class="shell">
         <span>Jai Kharbanda · London</span>
