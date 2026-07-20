@@ -14,6 +14,6 @@ artifacts:
 
 **What I did.** I designed the curriculum, co-taught the sessions and built the delivery infrastructure myself: an attendee hub with recorded lectures, week-by-week PDFs, downloadable skills and copy-paste prompts, all hosted on GitHub Pages with QR codes in the room. Each week had a run sheet planned to the minute, with fallback demos for when live AI decides to be slow in front of an audience.
 
-**What happened.** By the final session, every participant had built and deployed a live website of their own, in-session, most of them for the first time. The series earned a retrospective with the organisers and a follow-on partnership.
+**What happened.** By the final session, every participant had built and deployed a live website of their own, in-session. The series earned a retrospective with the organisers and a follow-on partnership.
 
 **What I'd reuse.** The shipping rule. Confidence with AI tools comes from the moment your own thing goes live, and no amount of watching someone else demo replaces it. Also the hub-first format: when everything from the session lives at one link, the session keeps working after everyone goes home.
