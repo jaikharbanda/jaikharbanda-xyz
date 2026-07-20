@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import { getCollection } from 'astro:content';
+
+const all = (await getCollection('work'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base
+  title="Work — Jai Kharbanda"
+  description="Case studies across GTM systems and applied AI teaching, tagged by pillar."
+  active="work"
+>
+  <section class="hero">
+    <h1>Work</h1>
+    <p class="sub">
+      Case studies from both sides of the job. Client names and internal numbers are anonymised
+      where they need to be; each study says so when they are.
+    </p>
+  </section>
+
+  <div class="grid3">
+    {all.map((entry) => <WorkCard entry={entry} />)}
+  </div>
+</Base>

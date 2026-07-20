@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import WorkCard from '../components/WorkCard.astro';
+import { getCollection } from 'astro:content';
+import { getPosts, ukDate } from '../lib/substack.js';
+
+const work = (await getCollection('work'))
+  .filter((e) => e.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const posts = (await getPosts(3));
+---
+<Base
+  title="Jai Kharbanda — Applied AI Lead"
+  description="I sell AI capability to enterprises and run my own sales operation on a 14-agent system I built. Not a developer. I write weekly about the gap between knowing AI and using it."
+>
+  <section class="hero">
+    <h1>I'm not a developer. I built a 14-agent system that runs my sales job anyway.</h1>
+    <p class="sub">
+      I'm Jai, Applied AI Lead at Turing College, a YC-backed edtech. History degree, sales career,
+      no formal technical training. Three months with Claude Code changed what I could build. My job
+      now is helping enterprises give their people the same jump, and I write about it weekly.
+    </p>
+  </section>
+
+  <section class="grid2">
+    <a class="card track-card" href="/gtm">
+      <span class="tags"><span class="tag gtm">GTM</span></span>
+      <h2>GTM systems</h2>
+      <p>
+        Enterprise sales for AI apprenticeships in the UK: 6 to 10 discovery calls a week,
+        self-built qualification frameworks, an outbound engine audited across 100+ campaigns.
+        I treat pipeline as an engineering problem and publish the frameworks that survive
+        contact with real deals.
+      </p>
+      <span class="cta">See the systems</span>
+    </a>
+    <a class="card track-card" href="/ai">
+      <span class="tags"><span class="tag ai">AI & teaching</span></span>
+      <h2>Applied AI &amp; teaching</h2>
+      <p>
+        Multi-week Claude Code curricula, monthly live workshops, demos where the audience ships
+        something before they leave. In the last series every participant deployed a live website
+        in-session. I build the attendee hubs, run sheets and sandboxes myself.
+      </p>
+      <span class="cta">See what I teach</span>
+    </a>
+  </section>
+
+  <section class="bridge">
+    <h2>Why one site for both</h2>
+    <p>
+      I sell AI capability by day and run that sales job on agents I built at night. I took this
+      role because I believe the average person can become properly AI capable and future proof
+      themselves, whatever happens to their job title. I'm the test case. Everything here is
+      either the selling, the building, or the teaching of that one idea.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <a href="/work">All case studies</a>
+    </div>
+    <div class="grid3" style="margin-top: 1rem;">
+      {work.map((entry) => <WorkCard entry={entry} />)}
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section>
+      <div class="section-head">
+        <h2>Latest writing</h2>
+        <a href="/writing">All posts</a>
+      </div>
+      <ul class="post-list">
+        {posts.map((p) => (
+          <li>
+            <span class="date">{ukDate(p.date)}</span><br />
+            <a href={p.link}>{p.title}</a>
+            {p.description && <p>{p.description.slice(0, 160)}{p.description.length > 160 ? '…' : ''}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="subscribe">
+    <h2>AI with Jai, weekly</h2>
+    <p>
+      One idea a week on closing the gap between knowing AI and using it. Written for operators,
+      L&amp;D teams and anyone whose job title is about to change.
+    </p>
+    <a class="btn" href="https://jaikharbanda.substack.com/subscribe">Subscribe on Substack</a>
+  </section>
+</Base>

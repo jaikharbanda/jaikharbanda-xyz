@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { ukDate } from '../../lib/substack.js';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('work');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, pillars, date, artifacts, note, summary } = entry.data;
+---
+<Base title={`${title} — Jai Kharbanda`} description={summary} active="work">
+  <section class="hero">
+    <h1>{title}</h1>
+    <div class="meta-row">
+      <span class="tags">
+        {pillars.includes('gtm') && <span class="tag gtm">GTM</span>}
+        {pillars.includes('ai') && <span class="tag ai">AI & teaching</span>}
+      </span>
+      <span>{ukDate(date)}</span>
+    </div>
+  </section>
+
+  <article class="prose">
+    <Content />
+  </article>
+
+  {artifacts.length > 0 && (
+    <aside class="artifacts prose">
+      <h3>Public artefacts</h3>
+      <ul>
+        {artifacts.map((a) => (
+          <li><a href={a.url}>{a.label}</a></li>
+        ))}
+      </ul>
+    </aside>
+  )}
+
+  {note && <p class="footnote prose">{note}</p>}
+
+  <p style="margin-top: 2rem;"><a href="/work">All case studies</a></p>
+</Base>

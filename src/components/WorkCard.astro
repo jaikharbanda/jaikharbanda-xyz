@@ -1,0 +1,16 @@
+---
+interface Props {
+  entry: any;
+}
+const { entry } = Astro.props;
+const { title, pillars, summary } = entry.data;
+---
+<a class="card" href={`/work/${entry.id}`}>
+  <span class="tags">
+    {pillars.includes('gtm') && <span class="tag gtm">GTM</span>}
+    {pillars.includes('ai') && <span class="tag ai">AI & teaching</span>}
+  </span>
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  <span class="cta">Read the case study</span>
+</a>

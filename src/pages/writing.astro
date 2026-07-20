@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPosts, ukDate } from '../lib/substack.js';
+
+const posts = await getPosts(30);
+---
+<Base
+  title="Writing — Jai Kharbanda"
+  description="Weekly writing on the gap between knowing AI and using it. Published at AI with Jai on Substack."
+  active="writing"
+>
+  <section class="hero">
+    <h1>Writing</h1>
+    <p class="sub">
+      I publish weekly at <a href="https://jaikharbanda.substack.com">AI with Jai</a>. The running
+      thread is the knowing-doing gap: why giving people AI tools changes so little, and what
+      actually makes a person or a team capable. This page updates itself from the Substack feed.
+    </p>
+  </section>
+
+  {posts.length > 0 ? (
+    <ul class="post-list">
+      {posts.map((p) => (
+        <li>
+          <span class="date">{ukDate(p.date)}</span><br />
+          <a href={p.link}>{p.title}</a>
+          {p.description && <p>{p.description.slice(0, 220)}{p.description.length > 220 ? '…' : ''}</p>}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="prose">
+      The feed didn't load this time. Everything lives at
+      <a href="https://jaikharbanda.substack.com">jaikharbanda.substack.com</a>.
+    </p>
+  )}
+
+  <section class="subscribe">
+    <h2>Get the next one</h2>
+    <p>One idea a week, no filler. Free.</p>
+    <a class="btn" href="https://jaikharbanda.substack.com/subscribe">Subscribe on Substack</a>
+  </section>
+</Base>
