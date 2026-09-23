@@ -18,13 +18,19 @@ function clean(s) {
     .trim();
 }
 
+// Every outcome is written to the build log. This used to fail silently, so the live site
+// said "The feed didn't load this time" while nothing anywhere said why.
 export async function getPosts(limit = 20) {
   try {
     const res = await fetch(FEED);
-    if (!res.ok) return [];
+    if (!res.ok) {
+      const body = (await res.text().catch(() => '')).replace(/\s+/g, ' ').slice(0, 120);
+      console.warn(`substack: feed refused, HTTP ${res.status} (server=${res.headers.get('server') ?? '?'}, cf-mitigated=${res.headers.get('cf-mitigated') ?? 'none'}): ${body}`);
+      return [];
+    }
     const xml = await res.text();
     const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]);
-    return items
+    const posts = items
       .map((i) => {
         const title = clean(field(i, 'title'));
         const description = clean(field(i, 'description'));
@@ -37,7 +43,11 @@ export async function getPosts(limit = 20) {
       })
       .filter((p) => p.title && p.link)
       .slice(0, limit);
-  } catch {
+    const start = posts.length ? '' : ` (feed starts: ${xml.replace(/\s+/g, ' ').slice(0, 120)})`;
+    console.log(`substack: loaded ${posts.length} posts${start}`);
+    return posts;
+  } catch (err) {
+    console.warn(`substack: feed request failed: ${err?.cause?.code ?? err?.cause?.message ?? err?.message ?? err}`);
     return [];
   }
 }
