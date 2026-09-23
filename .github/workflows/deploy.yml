@@ -36,3 +36,16 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # GitHub switches off the daily schedule of a public repo after 60 days without a commit.
+  # That froze this site on 19 Sep 2026. Re-enabling the workflow through the API on every
+  # run restarts that clock, so the daily rebuild keeps going between code changes.
+  keepalive:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Keep the daily rebuild switched on
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/$GITHUB_REPOSITORY/actions/workflows/deploy.yml/enable"
